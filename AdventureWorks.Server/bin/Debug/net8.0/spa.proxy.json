@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:60697",
+"RedirectUrl": "",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\Joel_\\source\\repos\\AdventureWorks\\AdventureWorks.Server\\..\\adventureworks.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

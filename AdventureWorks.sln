@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35913.81 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "adventureworks.client", "adventureworks.client\adventureworks.client.esproj", "{CC1CC3B1-6F13-10F4-0843-9BAB2EB3CC9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks.Server", "AdventureWorks.Server\AdventureWorks.Server.csproj", "{DAD560C4-AEB5-4586-9381-2C27F5E3EB62}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC1CC3B1-6F13-10F4-0843-9BAB2EB3CC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1CC3B1-6F13-10F4-0843-9BAB2EB3CC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1CC3B1-6F13-10F4-0843-9BAB2EB3CC9A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CC1CC3B1-6F13-10F4-0843-9BAB2EB3CC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1CC3B1-6F13-10F4-0843-9BAB2EB3CC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1CC3B1-6F13-10F4-0843-9BAB2EB3CC9A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DAD560C4-AEB5-4586-9381-2C27F5E3EB62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD560C4-AEB5-4586-9381-2C27F5E3EB62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD560C4-AEB5-4586-9381-2C27F5E3EB62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD560C4-AEB5-4586-9381-2C27F5E3EB62}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E973DE9-6AD6-4D68-8A26-CFD8F80250A6}
+	EndGlobalSection
+EndGlobal
