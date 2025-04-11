@@ -1,1 +1,13 @@
-<p>header works!</p>
+<header id="aw-header">
+    <nav aria-label="Main navigation" id="aw-nav">
+        <a id="logo-container" routerLink="/">
+            <img id="logo" src="https://picsum.photos/seed/-1/100/100" alt="AdventureWorks Logo" />
+            <h1 id="site-title">AdventureWorks</h1>
+            <span id="site-tagline">Stock up for your next journey</span>
+        </a>
+        <div>
+            <a routerLink="/login" aria-label="Login to your account" style="margin-right: 1rem;" aria-describedby="site-title site-tagline">Login</a>
+            <a routerLink="/signup" aria-label="Sign up for a new account" aria-describedby="site-title site-tagline">Create Account</a>
+        </div>
+    </nav>
+</header>

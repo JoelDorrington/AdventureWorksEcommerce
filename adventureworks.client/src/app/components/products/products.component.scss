@@ -1,0 +1,31 @@
+.shop-title {
+    margin: 10px 0;
+}
+
+.search-filter-container {
+    height: 100px;
+    padding-top: 1px;
+}
+.products-container {
+  overflow: auto;
+  position: absolute;
+  bottom: 50px;
+  top: 169px;
+}
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .product-card {
+    margin: 5px;
+    max-width: 200px;
+    border: 1px solid #aaaaaa;
+    border-radius: 2px;
+    box-shadow: 2px 2px 10px #aaaaaa;
+
+    .product-image {
+      width: 100%;
+    }
+  }
+}

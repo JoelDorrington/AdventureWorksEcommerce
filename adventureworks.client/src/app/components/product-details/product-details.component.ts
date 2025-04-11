@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-product-details',
-  standalone: false,
+  standalone: true,
   templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.css'
+  styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent {
 

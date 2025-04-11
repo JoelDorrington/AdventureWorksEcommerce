@@ -1,71 +1,31 @@
-<div class="search-filter-container">  
- <input type="text" placeholder="Search products..." class="search-bar" />  
+<div class="search-filter-container">
+    <h2 class="shop-title">Shop</h2>
+    <input type="text" placeholder="Search products..." class="search-bar" />
 
- <select class="filter-select">  
-   <option value="name">Name</option>  
-   <option value="price">Price</option>  
- </select>  
+    <select class="filter-select">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+    </select>
 
- <select class="order-select">  
-   <option value="asc">Ascending</option>  
-   <option value="desc">Descending</option>  
- </select>  
+    <select class="order-select">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+    </select>
 </div>
 <div class="products-container">
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
-  <div class="product-card">
-    <a class="product-link">
-      <img src="https://picsum.photos/seed/picsum/300/300" alt="Alternate Text" />
-      <h3 class="product-name">Product Name</h3>
-      <span class="product-price"></span>
-    </a>
-  </div>
+    <div class="products-grid">
+        @for(product of products(); track product.id) {
+        <div class="product-card">
+            <a class="product-link" routerLink="/products/{{product.id}}">
+                <img class="product-image" src="https://picsum.photos/seed/{{product.id}}/200/200" [alt]="product.name" />
+                <h3 class="product-name">{{product.name}}</h3>
+                <span class="product-price">{{product.listPrice | currency}}</span>
+            </a>
+        </div>
+        } @empty {
+        <div class="no-products">
+            <p>No products found.</p>
+        </div>
+        }
+    </div>
 </div>

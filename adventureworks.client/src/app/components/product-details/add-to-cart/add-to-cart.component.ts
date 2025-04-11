@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-add-to-cart',
   standalone: false,
   templateUrl: './add-to-cart.component.html',
-  styleUrl: './add-to-cart.component.css'
+  styleUrl: './add-to-cart.component.scss'
 })
 export class AddToCartComponent {
 

@@ -90,3 +90,6 @@ Main
      |  |- Shipment Tracking
      |  |- Return Status Tracking
      |- Email Campaigns
+
+TODO:
+- Create new schema for products to restrict access to selected tables/columns

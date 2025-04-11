@@ -1,1 +1,15 @@
-<p><a router-link="/products">Explore and shop AdventureWorks.com!</a></p>
+<div class="home-banner">
+        <a class="home-title" routerLink="/products">
+            <h2>Explore and shop AdventureWorks.com!</h2>
+        </a>
+
+    <div class="category-list">
+        @for(category of categories(); track category.productSubcategoryID;){
+        <a class="category-link"
+            routerLink="/products"
+            [queryParams]="{ category: category.productSubcategoryID }">
+            {{ category.categoryName }} - {{ category.name }}
+        </a>
+        }
+    </div>
+</div>

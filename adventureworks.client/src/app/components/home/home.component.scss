@@ -1,0 +1,36 @@
+.home-banner {
+  background-image: url('/assets/bannerpic.jpg');
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 100%;
+  height: calc(100vh - 119px);
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) inset;
+}
+
+.home-title {
+  color: white;
+  display: inline-block;
+  text-align: center;
+  text-shadow: 2px 2px 5px #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 20px;
+  margin-bottom: 50px;
+}
+
+.category-list {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    .category-link {
+        white-space: nowrap;
+        background: whitesmoke;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 3px;
+        box-shadow: 2px 2px 5px #999;
+    }
+}

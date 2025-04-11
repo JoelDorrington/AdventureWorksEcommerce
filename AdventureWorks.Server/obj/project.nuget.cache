@@ -6,7 +6,7 @@
   "expectedPackageFiles": [
     "C:\\Users\\Joel_\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Joel_\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
-    "C:\\Users\\Joel_\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.14\\microsoft.aspnetcore.spaproxy.8.0.14.nupkg.sha512",
+    "C:\\Users\\Joel_\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\8.0.15\\microsoft.aspnetcore.spaproxy.8.0.15.nupkg.sha512",
     "C:\\Users\\Joel_\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Joel_\\.nuget\\packages\\microsoft.bcl.cryptography\\8.0.0\\microsoft.bcl.cryptography.8.0.0.nupkg.sha512",
     "C:\\Users\\Joel_\\.nuget\\packages\\microsoft.data.sqlclient\\6.0.1\\microsoft.data.sqlclient.6.0.1.nupkg.sha512",

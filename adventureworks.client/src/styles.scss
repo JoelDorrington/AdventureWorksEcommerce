@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    margin-top: 69px;
+    font-family: 'Nunito', sans-serif;
+    height: calc(100vh - 69px);
+}
+
+:root {
+  --main-color: #335;
+}

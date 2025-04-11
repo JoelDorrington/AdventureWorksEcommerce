@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "AdventureWorks.Server\\AdventureWorks.Server.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "adventureworks.client\\adventureworks.client.esproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
