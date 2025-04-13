@@ -2,10 +2,7 @@
 using System.Reflection;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Common;
-using System.Linq;
 using Microsoft.Data.SqlClient;
-using System.Diagnostics;
 using AdventureWorks.Server.DAL.QueryParameters;
 
 namespace AdventureWorks.Server.DAL

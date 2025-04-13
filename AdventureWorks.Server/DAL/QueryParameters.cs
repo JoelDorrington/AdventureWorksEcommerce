@@ -62,7 +62,6 @@ namespace AdventureWorks.Server.DAL.QueryParameters
                 ComparerOperators.LessThan => "<",
                 ComparerOperators.LessThanOrEqual => "<=",
                 ComparerOperators.Like => "LIKE",
-                ComparerOperators.In => "IN",
                 _ => "=",
             };
         }
@@ -71,7 +70,15 @@ namespace AdventureWorks.Server.DAL.QueryParameters
         {
             if (string.IsNullOrEmpty(Column)) return string.Empty;
             if (string.IsNullOrEmpty(Value)) return Column;
-            return $"t.[{Column}] {OperatorToString()} {Value}";
+
+            if (double.TryParse(Value, out _))
+            {
+                return $"t.[{Column}] {OperatorToString()} {Value}";
+            }
+            else
+            {
+                return $"t.[{Column}] {OperatorToString()} N'{Value}'";
+            }
         }
     }
     public class GetParameters

@@ -68,7 +68,7 @@ namespace AdventureWorks.Server.DAL
 
         public void AddPaging(int page, int pageSize)
         {
-            if (page > 0 && pageSize > 0)
+            if (page >= 0 && pageSize > 0)
             {
                 offset = $"OFFSET {page * pageSize} ROWS";
                 fetch = $"FETCH NEXT {pageSize} ROWS ONLY";

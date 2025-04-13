@@ -1,10 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 export type CountProductsParams = {
   search?: string
-  category?: string | null
+  category?: number | null
 }
 export type GetProductsParams = {
   page: number;
@@ -36,6 +36,7 @@ export interface Product extends ProductPartial {
 })
 export class ProductsService {
   http: HttpClient = inject(HttpClient);
+  private categoriesCache: ProductCategory[] | null = null; // Cache for product categories
 
   getProducts(params: GetProductsParams): Observable<ProductPartial[]> {
     let queryParams = new HttpParams();
@@ -53,7 +54,16 @@ export class ProductsService {
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
-    return this.http.get<ProductCategory[]>('/api/ProductCategories')
+    // If categories are already cached, return them as an Observable
+    if (this.categoriesCache) {
+      return of(this.categoriesCache);
+    }
+
+    return this.http.get<ProductCategory[]>('/api/ProductCategories').pipe(
+      tap(categories => {
+        this.categoriesCache = categories; // Cache the categories
+      })
+    )
   }
 
 }

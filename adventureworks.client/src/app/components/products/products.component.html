@@ -1,23 +1,32 @@
-<div class="search-filter-container">
+<form class="search-filter-container" [formGroup]="queryControls">
     <h2 class="shop-title">Shop</h2>
-    <input type="text" placeholder="Search products..." class="search-bar" />
 
-    <select class="filter-select">
-        <option value="name">Name</option>
-        <option value="price">Price</option>
+    <input type="text" placeholder="Search products..." class="search-bar"
+           formControlName="search" />
+
+    <select class="sort-select" formControlName="category">
+        <option value="">All Products</option>
+        @for(category of categories(); track category.value;){
+            <option [value]="category.value">{{category.label}}</option>
+        }
     </select>
 
-    <select class="order-select">
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
+    <select class="sort-select" formControlName="sort">
+        <option value="name">Sort by name</option>
+        <option value="price">Sort by price</option>
     </select>
-</div>
+
+    <select class="reverse-select" formControlName="reverse">
+        <option [value]="false">{{queryControls.value.sort === 'price' ? 'Low to high' : 'A-Z'}}</option>
+        <option [value]="true">{{queryControls.value.sort === 'price' ? 'High to low' : 'Z-A'}}</option>
+    </select>
+</form>
 <div class="products-container">
     <div class="products-grid">
         @for(product of products(); track product.id) {
         <div class="product-card">
             <a class="product-link" routerLink="/products/{{product.id}}">
-                <img class="product-image" src="https://picsum.photos/seed/{{product.id}}/200/200" [alt]="product.name" />
+                <img class="product-image" src="/api/products/{{product.id}}/thumbnail  " [alt]="product.name" />
                 <h3 class="product-name">{{product.name}}</h3>
                 <span class="product-price">{{product.listPrice | currency}}</span>
             </a>
@@ -28,4 +37,10 @@
         </div>
         }
     </div>
+    @if(loading()){
+    <div class="loading-indicator alert alert-info">
+        <p>Loading more products...</p>
+    </div>
+    }
+    <hr />
 </div>
