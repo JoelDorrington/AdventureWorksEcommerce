@@ -28,11 +28,14 @@ export type ProductCategory = {
 }
 
 export interface Product extends ProductPartial {
-
+  description: string;
+  productNumber: string;
+  color: string;
+  size: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
   http: HttpClient = inject(HttpClient);
@@ -51,6 +54,10 @@ export class ProductsService {
         'Accept': 'application/json'
       }
     });
+  }
+
+  getProductByID(id: number): Observable<{data:Product}> {
+    return this.http.get<{data:Product}>(`/api/Products/${id}`);
   }
 
   getProductCategories(): Observable<ProductCategory[]> {

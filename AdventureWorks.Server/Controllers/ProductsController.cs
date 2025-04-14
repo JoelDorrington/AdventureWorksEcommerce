@@ -4,25 +4,28 @@ using AdventureWorks.Server.DAL.QueryParameters;
 using AdventureWorks.Server.Entities;
 using Microsoft.Data.SqlClient;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace AdventureWorks.Server.Controllers
 {
     public class ProductResponse
     {
-        public Product? data { get; set; }
+        public required Product data { get; set; }
     }
 
 
     [Route("api/[controller]")]
     [ApiController]
-    public class Products : ControllerBase
+    public class ProductsController : ControllerBase
     {
+        private readonly ApplicationDbContext _context;
         private ISqlClientFactory _sqlClientFactory;
         private Repository<Product> _repository;
         
-        public Products(IConfiguration config)
+        public ProductsController(IConfiguration config, ApplicationDbContext context)
         {
+            _context = context;
             _sqlClientFactory = new DAL.SqlClientFactory(config);
             _repository = new Repository<Product>(_sqlClientFactory);
         }
@@ -100,8 +103,9 @@ namespace AdventureWorks.Server.Controllers
             var stream = new SqlReaderStream(_sqlClientFactory, command);
             try
             {
-                Response.Headers.Append("Content-Disposition", $"inline; filename={stream.FileName}");
                 await stream.ExecuteReaderAsync();
+                Response.Headers.Append("Cache-Control", "public, max-age=86400, proxy-revalidate");
+                Response.Headers.Append("Content-Disposition", $"inline; filename={stream.FileName}");
                 return new FileStreamResult(stream, stream.Mimetype);
             }
             catch (InvalidOperationException ex)
@@ -131,7 +135,9 @@ namespace AdventureWorks.Server.Controllers
             try
             {
                 await stream.ExecuteReaderAsync();
-                return new FileStreamResult(stream, "image/*");
+                Response.Headers.Append("Cache-Control", "public, max-age=86400, proxy-revalidate");
+                Response.Headers.Append("Content-Disposition", $"inline; filename={stream.FileName}");
+                return new FileStreamResult(stream, stream.Mimetype);
             }
             catch (InvalidOperationException ex)
             {
@@ -153,12 +159,34 @@ namespace AdventureWorks.Server.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get(int id)
         {
-            ProductResponse response = new();
-            response.data = await _repository.GetByIdAsync(id);
-            if(response.data == null)
+            string cultureID = Request.Headers["Accept-Language"].ToString().Split(',').FirstOrDefault()?.Substring(0, 2) ?? "en";
+            Debug.WriteLine($"{id} {cultureID}");
+            var product = await _context.Products
+                .Where(p => p.ProductID == id)
+                .Select(p => new Product(p.ProductID)
+                {
+                    Name = p.Name,
+                    ListPrice = p.ListPrice,
+                    Description = p.ProductModel != null ? p.ProductModel.ProductModelProductDescriptionCultures
+                        .Where(c => c.CultureID == cultureID)
+                        .Select(c => c.ProductDescription.Description)
+                        .FirstOrDefault()
+                        : "",
+                    Color = p.Color,
+                    Size = p.Size,
+                    ProductNumber = p.ProductNumber,
+                    ProductModelID = p.ProductModelID,
+                })
+                .FirstOrDefaultAsync();
+
+            if (product == null)
             {
                 return NotFound();
             }
+            ProductResponse response = new()
+            {
+                data = product
+            };
             return Ok(response);
         }
 

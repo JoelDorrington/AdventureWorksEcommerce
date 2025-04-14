@@ -9,10 +9,10 @@ namespace AdventureWorks.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductCategories : ControllerBase
+    public class ProductCategoriesController : ControllerBase
     {
         private Repository<ProductSubcategory> _repository;
-        public ProductCategories(IConfiguration config)
+        public ProductCategoriesController(IConfiguration config)
         {
             _repository = new Repository<ProductSubcategory>(new SqlClientFactory(config));
         }

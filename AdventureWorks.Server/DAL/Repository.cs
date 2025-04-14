@@ -73,9 +73,20 @@ namespace AdventureWorks.Server.DAL
             return entity;
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id, IJoinParameter[]? j = null)
         {
-            throw new NotImplementedException();
+            var args = new GetParameters();
+            args.Select = [ new SelectStar() ];
+            args.Filter = new WhereExpression([
+                new WhereCondition(_primaryKey, ComparerOperators.Equal, id.ToString())
+            ]);
+            if(j != null)
+            {
+                args.JoinParams = j;
+            }
+            var results = await GetAllAsync(args);
+            if(results.Count == 0) throw new ArgumentException($"No entity found with id {id}");
+            return results[0];
         }
 
         public async Task AddAsync(T entity)

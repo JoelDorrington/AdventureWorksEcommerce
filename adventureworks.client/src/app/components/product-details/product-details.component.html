@@ -1,1 +1,13 @@
-<p>product-details works!</p>
+<div class="product-page">
+  <div class="image-panel">
+    <img src="assets/images/product-placeholder.png" alt="Product Image" class="product-image" />
+  </div>
+  <div class="info-panel">
+    <h1 class="product-title">Product Name</h1>
+    <p class="product-description">
+      This is a detailed description of the product. It provides all the necessary information about the product.
+    </p>
+    <p class="product-price">Price: {{product()?.listPrice | currency}}</p>
+    <button class="add-to-cart-button">Add to Cart</button>
+  </div>
+</div>

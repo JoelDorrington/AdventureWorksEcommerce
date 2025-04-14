@@ -91,16 +91,51 @@ namespace AdventureWorks.Server.DAL.QueryParameters
         public IJoinParameter[] JoinParams { get; set; } = [];
         public WhereExpression? Filter { get; set; } = null;
     }
-    public class SelectParameter(string? Column = null)
+    public class SelectParameter(string? Column = null, string? Alias = null)
     {
         public string Column { get; set; } = Column ?? string.Empty;
-        public string Alias { get; set; } = string.Empty;
+        public string Alias { get; set; } = Alias ?? string.Empty;
 
         new public string ToString()
         {
             if (string.IsNullOrEmpty(Column)) return string.Empty;
             if (string.IsNullOrEmpty(Alias)) return Column;
-            return $"{Column}{(string.IsNullOrEmpty(Alias) ? $" AS {Alias}" : "")}";
+            return $"[{Column}]{(string.IsNullOrEmpty(Alias) ? $" AS {Alias}" : "")}";
+        }
+        public string ToString(string tableAlias)
+        {
+            if (string.IsNullOrEmpty(Column)) return string.Empty;
+            if (string.IsNullOrEmpty(Alias)) return Column;
+            return $"{tableAlias}.[{Column}]{(string.IsNullOrEmpty(Alias) ? $" AS {Alias}" : "")}";
+        }
+    }
+
+    public class SelectStar : SelectParameter
+    {
+        new public string ToString()
+        {
+            return "*";
+        }
+        new public string ToString(string tableAlias)
+        {
+            return $"*";
+        }
+    }
+
+    public class SelectExpression(string Expression, string Alias) : SelectParameter(Expression, Alias)
+    {
+        public string Expression { get; set; } = Expression;
+        new public string ToString()
+        {
+            if (string.IsNullOrEmpty(Expression)) return string.Empty;
+            if (string.IsNullOrEmpty(Alias)) return Expression;
+            return $"{Expression} AS {Alias}";
+        }
+        new public string ToString(string tableAlias)
+        {
+            if (string.IsNullOrEmpty(Expression)) return string.Empty;
+            if (string.IsNullOrEmpty(Alias)) return Expression;
+            return $"{Expression} AS {Alias}";
         }
     }
 
