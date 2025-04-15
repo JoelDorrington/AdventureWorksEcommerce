@@ -1,14 +1,13 @@
 import { Component, signal, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductCategory, ProductsService } from '../../services/products.service';
-import { JsonPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [RouterLink, NgIf, JsonPipe]
+  imports: [RouterLink]
 })
 export class HomeComponent {
   categories = signal([] as ProductCategory[]);

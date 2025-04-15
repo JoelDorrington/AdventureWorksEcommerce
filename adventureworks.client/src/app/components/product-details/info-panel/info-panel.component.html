@@ -1,0 +1,7 @@
+<div class="product-info-panel">
+    <h2>{{product().name}}: {{product().listPrice | currency}}</h2>
+    <p>{{product().description}}</p>
+    <button type="button" class="btn btn-primary" (click)="onButtonClick($event)">
+        Add to cart
+    </button>
+</div>
