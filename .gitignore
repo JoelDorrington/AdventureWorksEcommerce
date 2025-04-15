@@ -1,3 +1,3 @@
 .vs
-bin/
-obj/
+AdventureWorks.Server/bin/
+AdventureWorks.Server/obj/
