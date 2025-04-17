@@ -19,6 +19,7 @@ namespace AdventureWorks.Server.Entities
         public int ProductID { get; set; }
         new public int Id { get => ProductID; }
         public string Name { get; set; } = string.Empty;
+        [NotMapped]
         public string? Description { get; set; }
         public decimal? ListPrice { get; set; }
         public string ThumbnailPhotoUrl { get; set; } = string.Empty;

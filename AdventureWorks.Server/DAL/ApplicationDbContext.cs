@@ -8,6 +8,7 @@ namespace AdventureWorks.Server.DAL
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,38 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
-
-export type CountProductsParams = {
-  search?: string
-  category?: number | null
-}
-export type GetProductsParams = {
-  page: number;
-  length: number;
-  sort: string;
-  reverse: boolean;
-} & CountProductsParams;
-
-export interface ProductPartial {
-  id: number;
-  name: string;
-  listPrice: string;
-  imgUrl: string;
-}
-
-export type ProductCategory = {
-  id: number;
-  productSubcategoryID: number;
-  categoryName: string;
-  name: string;
-}
-
-export interface Product extends ProductPartial {
-  description: string;
-  productNumber: string;
-  color: string;
-  size: string;
-}
+import { GetProductsParams } from '@models/get-products-params';
+import { ProductPartial } from '@models/product-partial.interface';
+import { ProductCategory } from '@models/product-category';
+import { Product } from '@models/product.interface';
 
 @Injectable({
   providedIn: 'root',

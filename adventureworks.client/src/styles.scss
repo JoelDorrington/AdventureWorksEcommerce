@@ -13,3 +13,38 @@ body {
 :root {
   --main-color: #335;
 }
+
+.toast-container {
+  max-width: 300px;
+  z-index: 100 !important;
+  display: flex;
+  flex-direction: column-reverse;
+  position: absolute;
+  bottom: 0;
+}
+
+.ngx-toastr {
+  background-color: #333; // Custom background color
+  color: #fff; // Custom text color
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Add shadow
+  margin: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.toast-success {
+  background-color: #28a745; // Success toast color
+}
+
+.toast-error {
+  background-color: #dc3545; // Error toast color
+}
+
+.toast-info {
+  background-color: #17a2b8; // Info toast color
+}
+
+.toast-warning {
+  background-color: #ffc107; // Warning toast color
+}

@@ -32,11 +32,12 @@ namespace AdventureWorks.Server.Controllers
 
         private string ViewPropertyToColumnName(string prop)
         {
-            return prop switch
+            return prop.ToLower() switch
             {
-                "productID" => "ProductID",
+                "productid" => "ProductID",
                 "name" => "Name",
                 "price" => "ListPrice",
+                "listprice" => "ListPrice",
                 _ => throw new ArgumentException($"Invalid property name: {prop}")
             };
         }

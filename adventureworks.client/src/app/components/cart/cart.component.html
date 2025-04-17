@@ -1,1 +1,31 @@
-<p>cart works!</p>
+<div style="display: inline-block;">
+  <h2 id="cart-title">Cart</h2>
+</div>
+<table class="cart-container">
+    @for(cartItem of cartItems(); track cartItem.productID){
+    <tr class="cart-item">
+        <td class="photo-column">
+            <img src="/api/products/{{cartItem.productID}}/thumbnail" alt="Product Image" class="product-image" />
+        </td>
+        <td class="item-details" style="max-width: 100px;">
+            <h3 class="product-name">{{cartItem.product.name}}</h3>
+            <p class="product-property">Price: ${{cartItem.product.listPrice}} &nbsp;<span style="white-space: nowrap;">Quantity: <input class="quantity-control" type="number" [value]="cartItem.quantity" /></span></p>
+        </td>
+        <td class="button-container">
+            <button class="remove-item-button" [disabled]="disableForm()"
+            (click)="removeFromCart(cartItem.productID)">Remove</button>
+        </td>
+    </tr>
+    }
+    @empty {
+      <tr>
+        <td>
+          <a aria-label="Link to shop" routerLink="/products">Visit the shop to add items to your cart! You'll see them here.</a>
+        </td>
+      </tr>
+    }
+</table>
+<div class="total-panel">
+  <span>Total: {{subtotal() | currency}}</span>
+  <button type="button" class="checkout-button">Checkout</button>
+</div>

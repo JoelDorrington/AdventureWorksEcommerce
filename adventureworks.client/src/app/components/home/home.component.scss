@@ -1,11 +1,13 @@
+@use 'mixins' as mixins;
+
 .home-banner {
   background-image: url('/assets/bannerpic.jpg');
   padding-top: 100px;
   padding-bottom: 100px;
-  width: 100%;
-  height: calc(100vh - 119px);
   background-size: cover;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8) inset;
+  height: 100%;
+  @include mixins.fullWidth;
 }
 
 .home-title {

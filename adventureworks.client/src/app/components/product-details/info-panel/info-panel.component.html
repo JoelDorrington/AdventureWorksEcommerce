@@ -1,6 +1,7 @@
 <div class="product-info-panel">
     <h2>{{product().name}}: {{product().listPrice | currency}}</h2>
     <p>{{product().description}}</p>
+    <label>Order Qty: <input type="number" step="1" min="1" max="100" [value]="orderQty()" (input)="setQty($event)" /></label>
     <button type="button" class="btn btn-primary" (click)="onButtonClick($event)">
         Add to cart
     </button>
